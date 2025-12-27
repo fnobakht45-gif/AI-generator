@@ -59,7 +59,7 @@ function generateContent(type, prompt) {
     // بررسی کلیدواژه‌ها
     for (const key in data[type]) {
         if (lower.includes(key)) {
-            return `User Instruction: "${prompt}"\n\nAI Generated Result:<br />\n${data[type][key]}`;
+            return `User Instruction: "${prompt}"\n\nAI Generated Result:\n${data[type][key]}`;
         }
     }
 

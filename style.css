@@ -52,6 +52,10 @@ select, textarea, button {
     outline: none;
     transition: all 0.3s ease;
 }
+select option[value=""] {
+    color: #888;
+}
+
 
 select:focus, textarea:focus {
     border-color: #2196F3;
@@ -94,4 +98,10 @@ button:hover {
     border-left: 4px solid #2196F3;
     margin-top: 10px;
     border-radius: 5px;
+}
+footer{
+    text-align: center;
+    font-size: 10px;
+    color: #5c5656;
+
 }
