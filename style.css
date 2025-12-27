@@ -105,3 +105,6 @@ footer{
     color: #5c5656;
 
 }
+.output {
+    white-space: pre-wrap;
+}

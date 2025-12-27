@@ -1,7 +1,8 @@
+
 const form = document.getElementById("generatorForm");
 const resultText = document.getElementById("resultText");
 
-// داده‌ها برای هر موضوع
+
 const data = {
     poem: {
         "love": "In the silence of night, my heart whispers your name...",
@@ -35,34 +36,54 @@ const data = {
     }
 };
 
-// رویداد submit فرم
-form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const type = document.getElementById("contentType").value;
     const prompt = document.getElementById("userPrompt").value.trim();
 
+    if (!type || !prompt) {
+        resultText.innerText = "Please select a content type and enter an instruction.";
+        return;
+    }
+
     resultText.innerText = "Generating... ⏳";
 
-    // شبیه‌سازی تاخیر برای حس AI
+    
     setTimeout(() => {
-        resultText.innerText = generateContent(type, prompt);
+        const output = generateContent(type, prompt);
+        typeWriter(resultText, output, 25);
     }, 300);
 });
 
-// تابع تولید محتوا
-function generateContent(type, prompt) {
+
+ function generateContent(type, prompt) {
     const lower = prompt.toLowerCase();
 
-    if (!data[type]) return "Unknown content type.";
+    if (!data[type]) {
+        return "Unknown content type.";
+    }
 
-    // بررسی کلیدواژه‌ها
     for (const key in data[type]) {
         if (lower.includes(key)) {
             return `User Instruction: "${prompt}"\n\nAI Generated Result:\n${data[type][key]}`;
         }
     }
 
-    // اگر کلیدواژه پیدا نشد
     return `User Instruction: "${prompt}"\n\nAI Generated Result:\nNo matching content found for your instruction.`;
+}
+
+
+function typeWriter(element, text, speed = 30) {
+    element.innerText = "";
+    let index = 0;
+
+    const interval = setInterval(() => {
+        if (index < text.length) {
+            element.innerText += text.charAt(index);
+            index++;
+        } else {
+            clearInterval(interval);
+        }
+    }, speed);
 }
