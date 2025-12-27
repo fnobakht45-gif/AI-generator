@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Content Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Content Generator</h1>
+
+    <form id="generatorForm">
+        <label>Content Type</label>
+        <select id="contentType">
+            <option value="poem">Poem</option>
+            <option value="joke">Joke</option>
+            <option value="recipe">Recipe</option>
+            <option value="quote">Quote</option>
+            <option value="travel">Travel Destination</option>
+            <option value="baby">Baby Name</option>
+        </select>
+
+        <label>Your Instruction</label>
+        <textarea id="userPrompt" placeholder="Write your instruction here..." required></textarea>
+
+        <button type="submit">Generate</button>
+    </form>
+
+    <div class="output">
+        <h2>Result</h2>
+        <p id="resultText">Your generated content will appear here...</p>
+    </div>
+    <p class="note">
+This project demonstrates an offline simulation of an AI content generator.
+Due to limited access to external AI APIs, content is generated using predefined datasets and rule-based logic.
+The system architecture is designed to be API-ready for future integration.
+</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
